@@ -4,8 +4,6 @@ import (
 	"github.com/spiffe/spire/pkg/common/catalog"
 
 	"github.com/spiffe/spire/pkg/agent/plugin/keymanager"
-	"github.com/spiffe/spire/pkg/agent/plugin/keymanager/disk"
-	"github.com/spiffe/spire/pkg/agent/plugin/keymanager/memory"
 )
 
 type keyManagerRepository struct {
@@ -22,13 +20,6 @@ func (repo *keyManagerRepository) Constraints() catalog.Constraints {
 
 func (repo *keyManagerRepository) Versions() []catalog.Version {
 	return []catalog.Version{keyManagerV1{}}
-}
-
-func (repo *keyManagerRepository) BuiltIns() []catalog.BuiltIn {
-	return []catalog.BuiltIn{
-		disk.BuiltIn(),
-		memory.BuiltIn(),
-	}
 }
 
 type keyManagerV1 struct{}

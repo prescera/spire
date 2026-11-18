@@ -2,12 +2,6 @@ package catalog
 
 import (
 	"github.com/spiffe/spire/pkg/agent/plugin/workloadattestor"
-	"github.com/spiffe/spire/pkg/agent/plugin/workloadattestor/docker"
-	"github.com/spiffe/spire/pkg/agent/plugin/workloadattestor/k8s"
-	"github.com/spiffe/spire/pkg/agent/plugin/workloadattestor/slurm"
-	"github.com/spiffe/spire/pkg/agent/plugin/workloadattestor/systemd"
-	"github.com/spiffe/spire/pkg/agent/plugin/workloadattestor/unix"
-	"github.com/spiffe/spire/pkg/agent/plugin/workloadattestor/windows"
 	"github.com/spiffe/spire/pkg/common/catalog"
 )
 
@@ -25,17 +19,6 @@ func (repo *workloadAttestorRepository) Constraints() catalog.Constraints {
 
 func (repo *workloadAttestorRepository) Versions() []catalog.Version {
 	return []catalog.Version{workloadAttestorV1{}}
-}
-
-func (repo *workloadAttestorRepository) BuiltIns() []catalog.BuiltIn {
-	return []catalog.BuiltIn{
-		docker.BuiltIn(),
-		k8s.BuiltIn(),
-		slurm.BuiltIn(),
-		systemd.BuiltIn(),
-		unix.BuiltIn(),
-		windows.BuiltIn(),
-	}
 }
 
 type workloadAttestorV1 struct{}

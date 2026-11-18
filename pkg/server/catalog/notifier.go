@@ -3,8 +3,6 @@ package catalog
 import (
 	"github.com/spiffe/spire/pkg/common/catalog"
 	"github.com/spiffe/spire/pkg/server/plugin/notifier"
-	"github.com/spiffe/spire/pkg/server/plugin/notifier/gcsbundle"
-	"github.com/spiffe/spire/pkg/server/plugin/notifier/k8sbundle"
 )
 
 type notifierRepository struct {
@@ -22,13 +20,6 @@ func (repo *notifierRepository) Constraints() catalog.Constraints {
 func (repo *notifierRepository) Versions() []catalog.Version {
 	return []catalog.Version{
 		notifierV1{},
-	}
-}
-
-func (repo *notifierRepository) BuiltIns() []catalog.BuiltIn {
-	return []catalog.BuiltIn{
-		gcsbundle.BuiltIn(),
-		k8sbundle.BuiltIn(),
 	}
 }
 
